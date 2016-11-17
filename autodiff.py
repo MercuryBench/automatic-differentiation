@@ -1,5 +1,11 @@
 from math import floor, pi
 
+def floor_gen(x):
+	if isinstance(x, DualNumber):
+		return DualNumber(floor_gen(x.r), floor_gen(x.e))
+	else:
+		return floor(x)
+
 class DualNumber(object):
 	def __init__(self, r, e):
 		# Initialization of real and infinitesimal parts.
@@ -78,7 +84,7 @@ class DualNumber(object):
 		else:
 			new_other = other
 		division = self / other
-		return DualNumber(floor(division.r), floor(division.e))
+		return DualNumber(floor_gen(division.r), floor_gen(division.e))
 	def __neg__(self):
 		return DualNumber(-self.r, -self.e)
 	def __eq__(self, other):
