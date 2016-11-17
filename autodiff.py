@@ -123,9 +123,9 @@ if __name__ == "__main__":
 	import numpy as np
 	import matplotlib.pyplot as plt
 	from trig import *
-	f = lambda x: sine(x)
+	f = lambda x: expo(2*x)*cosine(x)+x*x/(sine(x)+x)
 	fp = AutomaticDerivative(f)
-	x = np.linspace(0, 2*pi, 500)
+	x = np.linspace(0.2, 2*pi, 500)
 	f_vec = np.vectorize(f)
 	fp_vec = np.vectorize(fp)
 	plt.plot(x, f_vec(x))
